@@ -10,7 +10,7 @@ pipeline{
 
         dockerImage = ''  
     }
-    agent none
+    
     stages {    
              stage( ' suppression image docker ' ){
                  agent any
@@ -55,7 +55,7 @@ pipeline{
             } 
         } 
          stage('Deploy our image') { 
-
+            agent any
             steps { 
 
                 script { 
