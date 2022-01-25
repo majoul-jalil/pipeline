@@ -60,9 +60,9 @@ pipeline{
 
                 script { 
 
-                    docker.withRegistry( '', registryCredential ) { 
+                  sh '  docker.withRegistry( '', registryCredential ) { samplewebapp.push() } '
 
-                        dockerImage.push() 
+                         
 
                     }
 
