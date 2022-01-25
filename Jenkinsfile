@@ -57,7 +57,7 @@ pipeline{
         stage('Publish image to Docker Hub') {
           agent any
             steps {
-        withDockerRegistry([ credentialsId: "pipeline1233", url: "index.docker.io/majoul/pipeline" ]) {
+        withDockerRegistry([ credentialsId: "pipeline1233", url: "https://registry-1.docker.io/v2/" ]) {
           
           sh  'docker push  majoul/pipeline:latest' 
         }
