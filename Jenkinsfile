@@ -38,9 +38,9 @@ pipeline{
              agent any
            steps { 
                
-                sh 'docker build -t samplewebapp .' 
+                sh 'docker build -t pipeline .' 
                
-                //sh 'docker tag samplewebapp petclinic/samplewebapp:$BUILD_NUMBER' 
+                sh 'docker tag samplewebapp majoul/pipeline:latest' 
                
           } 
         }
@@ -59,7 +59,7 @@ pipeline{
             steps {
         withDockerRegistry([ credentialsId: "pipeline1233", url: "" ]) {
           
-          sh  'docker push samplewebapp:latest' 
+          sh  'docker push majoul/pipeline:latest' 
         }
                   
           }
