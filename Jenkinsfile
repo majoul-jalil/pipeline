@@ -6,7 +6,9 @@ pipeline{
                      steps {
                          script {
                            
-                             sh ' docker system prune '
+                            sh 'docker ps -aq | xargs --no-run-if-empty docker stop' 
+                echo ' remove all docker containers' 
+                sh 'docker ps -aq | xargs --no-run-if-empty docker rm'
                             }
                         }
         } 
