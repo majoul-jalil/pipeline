@@ -1,7 +1,7 @@
 pipeline{
      environment
     {
-        MYSQL_SERVER_IP='serverdatabasej.database.windows.net'
+        MYSQL_SERVER_IP='serverdb.mysql.database.azure.com'
         MYSQL_USERNAME='admin1'
         MYSQL_PASSWORD='Aa22557646'
     }
