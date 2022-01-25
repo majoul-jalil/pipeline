@@ -1,4 +1,10 @@
 pipeline{
+     environment
+    {
+        MYSQL_SERVER_IP='serverdatabasej.database.windows.net'
+        MYSQL_USERNAME='admin1'
+        MYSQL_PASSWORD='Aa22557646'
+    }
     agent none
     stages {    
              stage( ' suppression image docker ' ){
@@ -18,6 +24,7 @@ pipeline{
                          script {
                            
                              sh ' mvn  clean install '
+                             sh 'mvn -Denv.MYSQL_SERVER_IP=${MYSQL_SERVER_IP}  -Denv.MYSQL_USERNAME=${MYSQL_USERNAME} -Denv.MYSQL_PASSWORD=${MYSQL_PASSWORD} package -P MySQL '
                             }
                         }
         }
