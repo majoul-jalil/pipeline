@@ -7,7 +7,7 @@ pipeline{
         registry = "majoul/pipeline" 
 
         registryCredential = 'pipeline1233' 
-        a = ''
+        
         dockerImage = ''  
     }
     agent none
@@ -54,22 +54,15 @@ pipeline{
  
             } 
         } 
-         stage('Deploy our image') { 
-            agent any
-            steps { 
-
-                script { 
-
-                  sh '  docker.withRegistry( a, registryCredential ) { samplewebapp.push() } '
-
-                         
-
-                    
-
-                } 
-
-            }
-
-        }  
+        stage('Publish image to Docker Hub') {
+          
+            steps {
+        withDockerRegistry([ credentialsId: "pipeline1233", url: "" ]) {
+          
+          sh  'docker push samplewebapp' 
+        }
+                  
+          }
+        }
     }
 }
