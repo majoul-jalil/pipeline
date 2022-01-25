@@ -59,7 +59,7 @@ pipeline{
             steps {
         withDockerRegistry([ credentialsId: "pipeline1233", url: "" ]) {
           
-          sh  'docker push samplewebapp' 
+          sh  'docker push petclinic/samplewebapp:$BUILD_NUMBER' 
         }
                   
           }
