@@ -511,9 +511,9 @@
                 <db.script>mysql</db.script>
                 <jpa.database>MYSQL</jpa.database>
                 <jdbc.driverClassName>com.mysql.cj.jdbc.Driver</jdbc.driverClassName>
-                <jdbc.url><![CDATA[jdbc:mysql://localhost:3305/petclinic?useUnicode=true&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=CET]]></jdbc.url>
-                <jdbc.username>petclinic</jdbc.username>
-                <jdbc.password>petclinic123</jdbc.password>
+                <jdbc.url>jdbc:sqlserver://serverdatabasej.database.windows.net:1433;database=db;user=admin1@serverdatabasej;password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;</jdbc.url>
+                <jdbc.username>admin1</jdbc.username>
+                <jdbc.password>Aa22557646</jdbc.password>
             </properties>
             <dependencies>
                 <dependency>
