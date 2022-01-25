@@ -55,7 +55,7 @@ pipeline{
             } 
         } 
         stage('Publish image to Docker Hub') {
-          
+          agent any
             steps {
         withDockerRegistry([ credentialsId: "pipeline1233", url: "" ]) {
           
