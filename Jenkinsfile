@@ -6,7 +6,7 @@ pipeline{
                      steps {
                          script {
                            
-                             sh ' docker rmi --force imagepet '
+                             sh ' docker system prune '
                             }
                         }
         } 
