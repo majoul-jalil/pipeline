@@ -7,7 +7,7 @@ pipeline{
         registry = "majoul/pipeline" 
 
         registryCredential = 'pipeline1233' 
-
+        a = ''
         dockerImage = ''  
     }
     agent none
@@ -60,7 +60,7 @@ pipeline{
 
                 script { 
 
-                  sh '  docker.withRegistry( '', registryCredential ) { samplewebapp.push() } '
+                  sh '  docker.withRegistry( a, registryCredential ) { samplewebapp.push() } '
 
                          
 
