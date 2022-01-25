@@ -28,7 +28,7 @@ pipeline{
              
             steps
    { 
-                sh ' docker run  -d petclinic/samplewebapp   -p 8003:8080 ' 
+                sh ' docker run  -d   -p 8003:8080 petclinic/samplewebapp ' 
  
             } 
         } 
