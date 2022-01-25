@@ -40,7 +40,7 @@ pipeline{
                
                 sh 'docker build -t pipeline .' 
                
-                sh 'docker tag samplewebapp majoul/pipeline:latest' 
+                sh 'docker tag samplewebapp pipeline1233/pipeline:latest' 
                
           } 
         }
@@ -57,9 +57,9 @@ pipeline{
         stage('Publish image to Docker Hub') {
           agent any
             steps {
-        withDockerRegistry([ credentialsId: "pipeline1233", url: "https://registry-1.docker.io/v2/" ]) {
+        withDockerRegistry([ credentialsId: "pipeline1233", url: "" ]) {
           
-          sh  'docker push  majoul/pipeline:latest' 
+          sh  'docker push  pipeline1233/pipeline:latest' 
         }
                   
           }
