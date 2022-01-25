@@ -16,8 +16,8 @@ pipeline{
              agent any
            steps { 
                
-                sh 'docker build -t samplewebapp:latest .' 
-                sh 'docker tag samplewebapp petclinic/samplewebapp:latest' 
+                sh 'docker build -t samplewebapp .' 
+               
                 //sh 'docker tag samplewebapp petclinic/samplewebapp:$BUILD_NUMBER' 
                
           } 
@@ -28,7 +28,7 @@ pipeline{
              
             steps
    { 
-                sh ' docker run  -d   -p 8003:8080 petclinic/samplewebapp ' 
+                sh ' docker run  -d   -p 8003:8080 --name imagepet samplewebapp ' 
  
             } 
         } 
