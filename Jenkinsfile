@@ -59,7 +59,7 @@ pipeline{
             steps {
         withDockerRegistry([ credentialsId: "pipeline1233", url: "" ]) {
           
-          sh  'docker push majoul/pipeline:samplewebapp' 
+          sh  'docker push samplewebapp majoul/pipeline:latest' 
         }
                   
           }
