@@ -1,7 +1,15 @@
 pipeline{
     agent none
     stages {    
-             
+             stage( ' suppression image docker ' ){
+                 agent any
+                     steps {
+                         script {
+                           
+                             sh ' docker rmi --force imagepet '
+                            }
+                        }
+        } 
             stage( ' Build - Maven package ' ){
                  agent any
                      steps {
