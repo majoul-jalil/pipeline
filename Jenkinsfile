@@ -19,7 +19,7 @@ pipeline{
                 sh "sudo chown root:jenkins /run/docker.sock"
             }
 
-        } }
+        } 
              stage( ' suppression image docker ' ){
                  agent any
                      steps {
