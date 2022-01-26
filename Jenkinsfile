@@ -84,15 +84,15 @@ pipeline{
         
        steps
 { 
-              withCredentials([azureServicePrincipal('947c99c6-b6af-4927-b712-75f52c56a4b5')]) {
+          
             sh 'az login --service-principal -u 947c99c6-b6af-4927-b712-75f52c56a4b5 -p VgNEXg3CSRj6lcfHJeTgjCmT_6Hy.dCVUE -t 905bdb05-128b-4424-a706-766bdb164be1'
             sh 'az account set -s 726ead51-fa6c-4d42-9f84-b6c24b4dcee5'
-              }
-     steps {  script {
+              
+       script {
             acrSettings = new JsonSlurper().parseText(
                                             sh(script: "az acs show -o json -n myakacrregistry", returnStdout: true))
-     }}
-          }}
+     }
+}}
          stage('Deploy') {
          agent any
          
