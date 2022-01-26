@@ -38,9 +38,9 @@ pipeline{
              agent any
            steps { 
                
-                sh 'docker build -t pipeline .' 
+                sh 'sudo docker build -t pipeline .' 
                
-                sh 'docker tag samplewebapp pipeline1233/pipeline:latest' 
+                sh 'sudo docker tag samplewebapp pipeline1233/pipeline:latest' 
                
           } 
         }
@@ -50,7 +50,7 @@ pipeline{
              
             steps
    { 
-                sh ' docker run  -d   -p 8003:8080 --name imagepet samplewebapp ' 
+                sh 'sudo  docker run  -d   -p 8003:8080 --name imagepet samplewebapp ' 
  
             } 
         } 
@@ -59,7 +59,7 @@ pipeline{
             steps {
         withDockerRegistry([ credentialsId: "pipeline1233", url: "" ]) {
           
-          sh  'docker push  pipeline1233/pipeline:latest' 
+          sh  'sudo docker push  pipeline1233/pipeline:latest' 
         }
                   
           }
