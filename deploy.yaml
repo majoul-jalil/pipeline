@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: javaapp
+spec:
+  replicas: 6
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  selector:
+    matchLabels:
+      app: javaapp
+  template:
+    metadata:
+      labels:
+        app: javaapp
+    spec:
+      containers:
+      - name: javaapp
+        image: myakacrregistry.azurecr.io/myakacrregistry:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: javaapp
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+  selector:
+    app: javaapp
