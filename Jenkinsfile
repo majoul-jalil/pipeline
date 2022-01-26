@@ -12,6 +12,14 @@ pipeline{
     }
     agent none
     stages {    
+          stage( ' suppression image docker ' ){
+         agent any
+
+            steps {
+                sh "sudo chown root:jenkins /run/docker.sock"
+            }
+
+        } }
              stage( ' suppression image docker ' ){
                  agent any
                      steps {
