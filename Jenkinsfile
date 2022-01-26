@@ -1,4 +1,4 @@
-ispipeline{
+pipeline{
      environment
     {
         MYSQL_SERVER_IP='serverdb.mysql.database.azure.com'
