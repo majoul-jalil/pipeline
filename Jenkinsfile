@@ -20,17 +20,7 @@ pipeline{
             }
 
         } 
-             stage( ' suppression image docker ' ){
-                 agent any
-                     steps {
-                         script {
-                           
-                            sh 'docker ps -aq | xargs --no-run-if-empty docker stop' 
-                echo ' remove all docker containers' 
-                sh 'docker ps -aq | xargs --no-run-if-empty docker rm'
-                            }
-                        }
-        } 
+            
             stage( ' Build - Maven package ' ){
                  agent any
                      steps {
@@ -74,5 +64,17 @@ pipeline{
                          
             }
         }
+          stage( ' suppression image docker ' ){
+                 agent any
+                     steps {
+                         script {
+                           
+                           
+               sh 'docker stop imagepet'
+               sh 'docker rmi -f myakacrregistry'
+                
+                            }
+                        }
+        } 
     }
 }
