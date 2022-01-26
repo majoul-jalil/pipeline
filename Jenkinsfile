@@ -4,9 +4,9 @@ pipeline{
         MYSQL_SERVER_IP='serverdb.mysql.database.azure.com'
         MYSQL_USERNAME='admin1'
         MYSQL_PASSWORD='Aa22557646'
-        registry = "pipeline1233/pipeline" 
-
-        registryCredential = 'pipeline1233' 
+        registryName = 'myakacrregistry'
+        registryUrl = 'myakacrregistry.azurecr.io'
+        registryCredential = 'ACR' 
         
         dockerImage = ''  
     }
@@ -44,13 +44,11 @@ pipeline{
            
         stage('Docker Build and Tag') { 
              agent any
-           steps { 
-               
-                sh ' docker build -t pipeline .' 
-               
-                sh ' docker tag samplewebapp pipeline1233/pipeline:latest' 
-               
-          } 
+                     steps {
+                       script {dockerImage = docker.build registryName}
+                       
+                         
+                }    
         }
         
         stage('run image'){
@@ -58,19 +56,23 @@ pipeline{
              
             steps
    { 
-                sh '  docker run  -d   -p 8003:8080 --name imagepet samplewebapp ' 
+                sh '  docker run  -d   -p 8003:8080 --name imagepet dockerImage ' 
  
             } 
         } 
         stage('Publish image to Docker Hub') {
-          agent any
-            steps {
-        withDockerRegistry([ credentialsId: "pipeline1233", url: "" ]) {
-          
-          sh  ' docker push  pipeline1233/pipeline:latest' 
-        }
-                  
-          }
+             agent any
+          steps{ 
+
+                     script {
+                         docker.withRegistry( "http://${registryUrl}", registryCredential ) {
+
+                        dockerImage.push()} 
+                   
+                }
+                
+                         
+            }
         }
     }
 }
