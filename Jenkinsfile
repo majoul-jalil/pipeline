@@ -1,4 +1,4 @@
-pipeline{
+ispipeline{
      environment
     {
         MYSQL_SERVER_IP='serverdb.mysql.database.azure.com'
@@ -12,7 +12,7 @@ pipeline{
     }
     agent none
     stages {    
-          stage( ' suppression image docker ' ){
+          stage( ' permission ' ){
          agent any
 
             steps {
