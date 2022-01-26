@@ -72,7 +72,7 @@ pipeline{
                            
                sh 'docker stop imagepet'
                sh 'docker rmi -f myakacrregistry'
-                
+                sh 'docker rmi -f myakacrregistry.azurecr.io/myakacrregistry'
                             }
                         }
         } 
