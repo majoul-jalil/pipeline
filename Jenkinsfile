@@ -17,9 +17,7 @@ pipeline{
          agent any
 
             steps {
-                 sh 'docker stop imagepet'
-               sh 'docker rmi -f myakacrregistry'
-                sh 'docker rmi -f myakacrregistry.azurecr.io/myakacrregistry'
+               '
                 sh "sudo chown root:jenkins /run/docker.sock"
             }
 
