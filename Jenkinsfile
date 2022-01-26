@@ -56,7 +56,7 @@ pipeline{
              
             steps
    { 
-                sh '  docker run  -d   -p 8003:8080 --name imagepet dockerImage ' 
+                sh '  docker run  -d   -p 8003:8080 --name imagepet myakacrregistry ' 
  
             } 
         } 
