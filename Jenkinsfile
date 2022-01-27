@@ -71,7 +71,7 @@ pipeline{
                  agent any
                      steps {
                          script {
-                          sh 'docker system prune' 
+                          
                            
                sh 'docker stop imagepet'
                sh 'docker rmi -f myakacrregistry'
