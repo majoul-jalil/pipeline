@@ -83,7 +83,7 @@ pipeline{
         stage('Prepare Environment') {
               
         agent any
-        @NonCPS
+        
        steps
 { 
           
@@ -99,7 +99,7 @@ pipeline{
          
         steps
 { 
-            sh 'kubectl apply -f deploy.yaml --context AKSCLUSTER'
+            sh 'kubectl apply -f deploy.yaml '
         }}
     }
 }
