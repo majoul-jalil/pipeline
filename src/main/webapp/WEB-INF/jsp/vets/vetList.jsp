@@ -11,7 +11,7 @@
         <table id="vetsTable" class="table table-striped" aria-describedby="veterinarians">
             <thead>
             <tr>
-                <th scope="col">Name majoul</th>
+                <th scope="col">Name</th>
                 <th scope="col">Specialties</th>
             </tr>
             </thead>
