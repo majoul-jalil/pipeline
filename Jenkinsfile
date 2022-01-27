@@ -87,8 +87,8 @@ pipeline{
        steps
 { 
           
-            sh 'az login --service-principal -u 947c99c6-b6af-4927-b712-75f52c56a4b5 -p VgNEXg3CSRj6lcfHJeTgjCmT_6Hy.dCVUE -t 905bdb05-128b-4424-a706-766bdb164be1'
-            sh 'az account set -s 726ead51-fa6c-4d42-9f84-b6c24b4dcee5'
+            sh 'az login --service-principal -u beb5657b-2a3f-4e5b-b40c-e4bd788e5e2b -p b4yL2bwwLSREdtV_xY4i60IOjZh-qY4oBC -t 905bdb05-128b-4424-a706-766bdb164be1'
+            
             sh 'az aks get-credentials --resource-group groupebase --name AKSCLUSTER --overwrite-existing'
 }}
          stage('Deploy') {
