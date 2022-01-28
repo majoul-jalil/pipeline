@@ -38,6 +38,7 @@ pipeline{
             agent any
             steps {  sh "/home/devops/apache-jmeter-5.4.3/bin/jmeter -Jjmeter.save.saveservice.output_format=xml  -n -t src/test/jmeter/petclinic_test_plan.jmx    -l  test.jtl"
         step([$class: 'ArtifactArchiver', artifacts: 'test.jtl'])
+                   perfReport 'test.jtl'
                }
         }
         stage('Docker Build and Tag') { 
