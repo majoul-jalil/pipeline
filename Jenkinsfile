@@ -41,6 +41,11 @@ pipeline{
                    perfReport 'test.jtl'
                }
         }
+        stage ( 'Run JMeter Test' ){
+            agent any
+            steps {
+                
+                archiveArtifacts artifacts: 'target/petclinic.war'}}
         stage('Docker Build and Tag') { 
              agent any
                      steps {
