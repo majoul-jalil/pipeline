@@ -38,7 +38,7 @@ pipeline{
             agent any
             steps {
                 sh '/home/devops/apache-jmeter-5.4.3/bin/jmeter -n -t src/test/jmeter/petclinic_test_plan.jmx -l test.jtl'
-
+              step([$class: 'ArtifactArchiver', artifacts: 'JMeter.jtl'])
                 
             }
         }
