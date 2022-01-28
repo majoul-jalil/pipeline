@@ -39,7 +39,8 @@ pipeline{
             steps {
                 sh '/home/devops/apache-jmeter-5.4.3/bin/jmeter -n -t src/test/jmeter/petclinic_test_plan.jmx -l test.jtl'
               step([$class: 'ArtifactArchiver', artifacts: 'test.jtl'])
-                
+                 //perfReport "jmeter_scripts\\${jmeterTestFile}_results.jtl"
+    performanceReport parsers: [[$class: 'JMeterParser', glob: "test.jtl"]], relativeFailedThresholdNegative: 1.2, relativeFailedThresholdPositive: 1.89, relativeUnstableThresholdNegative: 1.8, relativeUnstableThresholdPositive: 1.5
             }
         }
         stage('Docker Build and Tag') { 
