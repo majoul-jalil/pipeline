@@ -41,7 +41,7 @@ pipeline{
                    perfReport 'test.jtl'
                }
         }
-        stage ( 'Run JMeter Test' ){
+        stage ( 'archive artifact war' ){
             agent any
             steps {
                 
