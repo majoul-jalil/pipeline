@@ -49,12 +49,7 @@ pipeline{
                 
                 archiveArtifacts artifacts: 'target/petclinic.war'}}
         stage ('upload to artifactory'){
-            agent { 
-                docker {
-                    image 'docker.bintray.io/jfrog/artifactory-oss'
-                    reuseNode true
-                }
-           }
+            agent any
           
             steps {
                    script {
