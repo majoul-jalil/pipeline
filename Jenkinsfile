@@ -51,14 +51,14 @@ pipeline{
         stage ('upload to artifactory'){
             agent { 
                 docker {
-                    image 'docker.bintray.io/jfrog/artifactory-oss:latest'
+                    image 'docker.bintray.io/jfrog/artifactory-oss'
                     reuseNode true
                 }
             }
             
             steps {
                    script {
-                sh 'jfrog rt upload --url http://127.0.0.1:8082/artifactory/   --acces-token ${'ARTIFACTORY_ACCESS_TOKEN'} target/petclinic.war java-web-app/'
+                sh 'jfrog rt upload --url http://127.0.0.1:8082/artifactory/   --acces-token ${ARTIFACTORY_ACCESS_TOKEN} target/petclinic.war java-web-app/'
                    }}
         }
         stage('Docker Build and Tag') { 
