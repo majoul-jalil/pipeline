@@ -26,16 +26,16 @@ pipeline{
 
      //   } 
             
-            stage( ' Build - Maven package ' ){
-                 agent any
-                     steps {
-                         script {
+         //   stage( ' Build - Maven package ' ){
+            //     agent any
+              //       steps {
+                //         script {
                              
-                             sh 'mvn clean -Denv.MYSQL_SERVER_IP=${MYSQL_SERVER_IP}  -Denv.MYSQL_USERNAME=${MYSQL_USERNAME} -Denv.MYSQL_PASSWORD=${MYSQL_PASSWORD} package  -P MySQL '
+                  //           sh 'mvn clean -Denv.MYSQL_SERVER_IP=${MYSQL_SERVER_IP}  -Denv.MYSQL_USERNAME=${MYSQL_USERNAME} -Denv.MYSQL_PASSWORD=${MYSQL_PASSWORD} package  -P MySQL '
                           
-                          }
-                        }
-        }
+                   //       }
+                    //    }
+     //   }
       //  stage ( 'Run JMeter Test' ){
         //    agent any
           //  steps {  sh "/home/devops/apache-jmeter-5.4.3/bin/jmeter -Jjmeter.save.saveservice.output_format=xml  -n -t src/test/jmeter/petclinic_test_plan.jmx    -l  test.jtl"
