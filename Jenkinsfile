@@ -51,7 +51,7 @@ pipeline{
         stage ('upload to artifactory'){
             agent { 
                 docker {
-                    image 'docker.bintray.io/jfrog/artifactory-oss'
+                    image 'docker.bintray.io/jfrog/artifactory-oss:latest'
                     reuseNode true
                 }
             }
