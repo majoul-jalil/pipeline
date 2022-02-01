@@ -12,7 +12,7 @@ pipeline{
         
         dockerImage = ''  
         CI = true
-        ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
+        ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-tokenn')
     }
     agent none
     stages {    
