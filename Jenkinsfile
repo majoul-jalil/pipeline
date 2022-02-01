@@ -49,16 +49,16 @@ pipeline{
                 
                 archiveArtifacts artifacts: 'target/petclinic.war'}}
         stage ('upload to artifactory'){
-         //   agent { 
-              //  docker {
-                //    image 'releases-docker.jfrog.io/jfrog/jfrog-cli-v2:2.12.0'
-                 //   reuseNode true
-              //  }
-           // }
-             agent any
+            agent { 
+                docker {
+                    image 'releases-docker.jfrog.io/jfrog/jfrog-cli-v2-jf'
+                    reuseNode true
+                }
+           }
+          
             steps {
                    script {
-                sh 'jf rt upload --url http://127.0.0.1:8082/artifactory/   --acces-token ${ARTIFACTORY_ACCESS_TOKEN} target/petclinic.war java-web-app/'
+                sh 'jf rt u --url http://127.0.0.1:8082/artifactory/   --acces-token ${ARTIFACTORY_ACCESS_TOKEN} target/petclinic.war java-web-app/'
                    }}
         }
         stage('Docker Build and Tag') { 
