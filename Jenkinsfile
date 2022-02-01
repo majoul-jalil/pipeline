@@ -18,7 +18,7 @@ pipeline{
     stages {    
          
             
-            stage( ' Build - Maven package ' ){
+            stage( '  Maven package ' ){
                  agent any
                      steps {
                          script {
@@ -35,7 +35,7 @@ pipeline{
                    perfReport 'test.jtl'
                }
         }
-        stage ( 'archive artifact war' ){
+        stage ( 'archiver artifact war' ){
             agent any
             steps {
                 
@@ -66,7 +66,7 @@ pipeline{
  
             } 
         } 
-        stage('Publish image to Docker Hub') {
+        stage('envoyer image vers ACR') {
              agent any
           steps{ 
 
@@ -80,7 +80,7 @@ pipeline{
                          
             }
         }
-          stage( ' suppression image docker ' ){
+          stage( ' suppression conteneur et  image docker ' ){
                  agent any
                      steps {
                          script {
@@ -94,7 +94,7 @@ pipeline{
                         }
         }
          
-        stage('Prepare Environment') {
+        stage('Preparation Environment') {
               
         agent any
         
@@ -105,7 +105,7 @@ pipeline{
             
             sh 'az aks get-credentials --resource-group groupebase --name AKSCLUSTER --overwrite-existing'
 }}
-         stage('Deploy') {
+         stage('Deploiment') {
          agent any
          
         steps
