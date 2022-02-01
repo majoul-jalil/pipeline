@@ -16,15 +16,15 @@ pipeline{
     }
     agent none
     stages {    
-          stage( ' permission ' ){
-         agent any
+         // stage( ' permission ' ){
+      //   agent any
 
-            steps {
+        //    steps {
               
-                sh "sudo chown root:jenkins /run/docker.sock"
-            }
+        //        sh "sudo chown root:jenkins /run/docker.sock"
+         //   }
 
-        } 
+     //   } 
             
             stage( ' Build - Maven package ' ){
                  agent any
@@ -49,13 +49,13 @@ pipeline{
                 
                 archiveArtifacts artifacts: 'target/petclinic.war'}}
         stage ('upload to artifactory'){
-            agent { 
-                docker {
-                    image 'releases-docker.jfrog.io/jfrog/jfrog-cli-v2:2.12.0'
-                    reuseNode true
-                }
-            }
-            
+         //   agent { 
+              //  docker {
+                //    image 'releases-docker.jfrog.io/jfrog/jfrog-cli-v2:2.12.0'
+                 //   reuseNode true
+              //  }
+           // }
+             agent any
             steps {
                    script {
                 sh 'jf rt upload --url http://127.0.0.1:8082/artifactory/   --acces-token ${ARTIFACTORY_ACCESS_TOKEN} target/petclinic.war java-web-app/'
