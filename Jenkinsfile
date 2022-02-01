@@ -58,7 +58,7 @@ pipeline{
           
             steps {
                    script {
-                sh 'jf rt u --url http://localhost:8082 --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/petclinic.war java-web-app/ '
+                sh 'jfrog rt upload --url http://localhost:8082 --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/petclinic.war java-web-app/ '
                    }}
         }
         stage('Docker Build and Tag') { 
