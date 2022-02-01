@@ -11,51 +11,43 @@ pipeline{
         registryCredential = 'ACR' 
         
         dockerImage = ''  
-        CI = true
-        ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
+     //   CI = true
+      //  ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
     }
     agent none
     stages {    
-         // stage( ' permission ' ){
-      //   agent any
-
-        //    steps {
-              
-        //        sh "sudo chown root:jenkins /run/docker.sock"
-         //   }
-
-     //   } 
+         
             
-         //   stage( ' Build - Maven package ' ){
-            //     agent any
-              //       steps {
-                //         script {
+            stage( ' Build - Maven package ' ){
+                 agent any
+                     steps {
+                         script {
                              
-                  //           sh 'mvn clean -Denv.MYSQL_SERVER_IP=${MYSQL_SERVER_IP}  -Denv.MYSQL_USERNAME=${MYSQL_USERNAME} -Denv.MYSQL_PASSWORD=${MYSQL_PASSWORD} package  -P MySQL '
+                            sh 'mvn clean -Denv.MYSQL_SERVER_IP=${MYSQL_SERVER_IP}  -Denv.MYSQL_USERNAME=${MYSQL_USERNAME} -Denv.MYSQL_PASSWORD=${MYSQL_PASSWORD} package  -P MySQL '
                           
-                   //       }
-                    //    }
-     //   }
-      //  stage ( 'Run JMeter Test' ){
-        //    agent any
-          //  steps {  sh "/home/devops/apache-jmeter-5.4.3/bin/jmeter -Jjmeter.save.saveservice.output_format=xml  -n -t src/test/jmeter/petclinic_test_plan.jmx    -l  test.jtl"
-        //step([$class: 'ArtifactArchiver', artifacts: 'test.jtl'])
-          //         perfReport 'test.jtl'
-            //   }
-        //}
+                          }
+                        }
+        }
+        stage ( 'Run JMeter Test' ){
+            agent any
+            steps {  sh "/home/devops/apache-jmeter-5.4.3/bin/jmeter -Jjmeter.save.saveservice.output_format=xml  -n -t src/test/jmeter/petclinic_test_plan.jmx    -l  test.jtl"
+        step([$class: 'ArtifactArchiver', artifacts: 'test.jtl'])
+                   perfReport 'test.jtl'
+               }
+        }
         stage ( 'archive artifact war' ){
             agent any
             steps {
                 
                 archiveArtifacts artifacts: 'target/petclinic.war'}}
-        stage ('upload to artifactory'){
-            agent any
+       // stage ('upload to artifactory'){
+          //  agent any
           
-            steps {
-                   script {
-                sh 'jfrog rt upload --url http://localhost:8082 --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/petclinic.war java-web-app/ '
-                   }}
-        }
+           // steps {
+                //   script {
+              //  sh 'jfrog rt upload --url http://localhost:8082 --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/petclinic.war java-web-app/ '
+                //   }}
+      //  }
         stage('Docker Build and Tag') { 
              agent any
                      steps {
