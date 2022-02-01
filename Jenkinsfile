@@ -12,7 +12,7 @@ pipeline{
         
         dockerImage = ''  
         CI = true
-        ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-tokenn')
+        ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
     }
     agent none
     stages {    
@@ -58,7 +58,7 @@ pipeline{
           
             steps {
                    script {
-                sh 'jf rt u --url http://127.0.0.1:8082/artifactory/   --acces-token ${ARTIFACTORY_ACCESS_TOKEN} target/petclinic.war java-web-app/'
+                sh 'jf rt u --url http://127.0.0.1:8082/artifactory/   --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/petclinic.war java-web-app/'
                    }}
         }
         stage('Docker Build and Tag') { 
